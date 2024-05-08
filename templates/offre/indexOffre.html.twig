@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container my-2">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">price</th>
+					<th scope="col">link</th>
+					<th scope="col">game</th>
+					<th scope="col">operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for offre in offres %}
+
+					<th scope="row">{{offre.id}}</th>
+					<td>{{offre.price}}</td>
+					<td>{{offre.link|default('vide')}}</td>
+					<td>{{offre.offre.name|default('pas associer')}}</td>
+
+
+					<td>
+						{# <div class="btn-group" role="group" aria-label="Basic mixed styles example">	#}					
+						<a href="{{ path('GameBuy.Offre.delete', {id: offre.id})}}" class="btn btn-danger">delete</a>
+							</div>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

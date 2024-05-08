@@ -3,3 +3,43 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+
+GameBuy.Home:
+    path: /
+    controller: App\Controller\GameController::index
+
+GameBuy.Game.New:
+    path: /gameForm
+    controller: App\Controller\GameController::new
+    methods: GET|POST
+
+GameBuy.Game.edit:
+    path: /gameEdit_{id}
+    controller: App\Controller\GameController::edit
+    methods: GET
+    
+
+GameBuy.Game.delete:
+    path: /gameDelete_{id}
+    controller: App\Controller\GameController::delete
+    methods: GET
+
+
+
+
+GameBuy.Offre.ShowAll:
+    path: /offre
+    controller: App\Controller\OffreController::index
+
+GameBuy.Offre.New:
+    path: /offreForm
+    controller: App\Controller\OffreController::new
+    methods: GET|POST
+
+GameBuy.Offre.delete:
+    path: /offre/delete_{id}
+    controller: App\Controller\OffreController::delete
+    methods: GET
+    
+
