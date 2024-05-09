@@ -5,8 +5,7 @@
 
 {% block body %}
 
-	<section class="container flex-wrap">
-
+	<section class="container">
 
 		{% for game in games %}
 			<div class="d-flex  flex-row" style="width_max: 480px;">
@@ -16,13 +15,31 @@
 
 				<div class="card w-50 m-1 mb-3">
 					<div class="card-body">
-						<h5 class="card-title">{{game.name}}</h5>
+						<h5 class="card-title">
+							<span>titre:</span>
+							{{game.name}}
+						</h5>
+						<p class="card-subtitle mb-2 text-body-secondary">
+							<span class="badge text-bg-secondary">
+								{{game.editeur | default('Null')}}
+							</span>
+							<span class="badge text-bg-secondary">
+								{{game.developpeurs | default('Null')}}
+							</span>
+							<span class="badge text-bg-secondary">
+								{{game.plateforme | default('Null')}}
+							</span>
+						</p>
+
 						<p class="card-text">{{game.descript}}</p>
 						<p class="card-text text-info fw-bold fs-3">{{ game.price}}€</p>
 
-						<div>
+						<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+
+							<a href="{{path('GameBuy.Game.edit',{id: game.id})}}" class="btn btn-warning">edite</a>
+
 							<a href={{game.link}} class="btn btn-primary">Buy</a>
-							{# <a href="{{path('GameBuy.Game.edit',{id: game.id})}}" class="btn btn-primary">edite</a> #}
+
 							{# <a href="{{path('GameBuy.Game.delete',{id: game.id})}}" class="btn btn-danger">suprimer</a> #}
 
 						</div>

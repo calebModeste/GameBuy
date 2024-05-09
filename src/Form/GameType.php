@@ -18,6 +18,15 @@ class GameType extends AbstractType
             ->add('name', TextType::class,[
                 'label' => 'Nom du jeux'
             ])
+            ->add('editeur', TextType::class,[
+                'label' => 'Editeur Corps'
+            ])
+            ->add('developpeurs', TextType::class,[
+                'label' => 'Developpeurs Corps'
+            ])
+            ->add('plateforme', TextType::class,[
+                'label' => 'PlateForme'
+            ])
             ->add('descript', TextareaType::class,[
                 'label' => 'Description'
             ])

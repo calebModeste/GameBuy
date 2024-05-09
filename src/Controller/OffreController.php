@@ -31,27 +31,42 @@ class OffreController extends AbstractController
 
         ]);
     }
+
+    
     public function new(Request $req, EntityManagerInterface $emi){
         $offre = new Offre();
-        $form = $this->createForm(OffreType::class, $offre);
+        $formOffre = $this->createForm(OffreType::class, $offre);
         
         
-        $form->handleRequest($req);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $formOffre->handleRequest($req);
+        if ($formOffre->isSubmitted() && $formOffre->isValid()) {
             // dd($form->getData());
-            $emi->persist($form->getData());
+            $emi->persist($formOffre->getData());
             $emi->flush();
             return $this->redirectToRoute('GameBuy.Offre.ShowAll');
         }
 
         return $this->render('offre/newOffre.html.twig',[
-            'Form' => $form->createView(),
+            'Form' => $formOffre->createView(),
         ]);
         }
 
 
-    public function edit(){
+    public function edit(Offre $offre,Request $req, EntityManagerInterface $manager){
+        $formOffre = $this->createForm(OffreType::class, $offre);
 
+
+        $formOffre->handleRequest($req);
+        if ($formOffre->isSubmitted() && $formOffre->isValid()) {
+
+            $manager->persist($formOffre->getData());
+            $manager->flush();
+            return $this->redirectToRoute('GameBuy.Offre.ShowAll');
+        }
+
+        return $this->render('Admin/adminEditOffre.html.twig', [
+            'Admin_form_OffreEdition' => $formOffre->createView(),
+        ]);
     }
 
     public function delete(Offre $offre, EntityManagerInterface $entityManager): Response

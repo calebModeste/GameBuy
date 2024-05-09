@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\GameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GameRepository::class)]
@@ -26,6 +27,16 @@ class Game
      */
     #[ORM\OneToMany(targetEntity: Offre::class, mappedBy: 'offre')]
     private Collection $offre;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $editeur = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $developpeurs = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $plateforme = null;
+
 
     public function __construct()
     {
@@ -96,11 +107,41 @@ class Game
         return $this;
     }
 
+    public function getEditeur(): ?string
+    {
+        return $this->editeur;
+    }
 
+    public function setEditeur(?string $edition): static
+    {
+        $this->editeur = $edition;
 
+        return $this;
+    }
 
+    public function getDeveloppeurs(): ?string
+    {
+        return $this->developpeurs;
+    }
 
+    public function setDeveloppeurs(?string $developpeurs): static
+    {
+        $this->developpeurs = $developpeurs;
 
+        return $this;
+    }
+
+    public function getPlateforme(): ?string
+    {
+        return $this->plateforme;
+    }
+
+    public function setPlateforme(?string $plateforme): static
+    {
+        $this->plateforme = $plateforme;
+
+        return $this;
+    }
 
 
 }

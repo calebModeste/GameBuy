@@ -27,9 +27,11 @@
 
 
 					<td>
-						{# <div class="btn-group" role="group" aria-label="Basic mixed styles example">	#}					
-						<a href="{{ path('GameBuy.Offre.delete', {id: offre.id})}}" class="btn btn-danger">delete</a>
-							</div>
+						<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+							<a href="{{ path('GameBuy.Offre.edit', {id: offre.id})}}" class="btn btn-warning">edit</a>
+
+							<a href="{{ path('GameBuy.Offre.delete', {id: offre.id})}}" class="btn btn-danger">delete</a>
+						</div>
 					</td>
 				</tr>
 			{% endfor %}

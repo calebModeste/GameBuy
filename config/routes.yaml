@@ -17,7 +17,7 @@ GameBuy.Game.New:
 GameBuy.Game.edit:
     path: /gameEdit_{id}
     controller: App\Controller\GameController::edit
-    methods: GET
+    methods: GET|POST
     
 
 GameBuy.Game.delete:
@@ -35,6 +35,11 @@ GameBuy.Offre.ShowAll:
 GameBuy.Offre.New:
     path: /offreForm
     controller: App\Controller\OffreController::new
+    methods: GET|POST
+
+GameBuy.Offre.edit:
+    path: /offre/edit_{id}
+    controller: App\Controller\OffreController::edit
     methods: GET|POST
 
 GameBuy.Offre.delete:

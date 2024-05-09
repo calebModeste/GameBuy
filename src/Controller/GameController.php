@@ -26,39 +26,39 @@ class GameController extends AbstractController
 
     public function new(Request $req,EntityManagerInterface $manager):Response{
         $game = new Game();
+        $formGame = $this->createForm(GameType::class, $game);
 
-        $form = $this->createForm(GameType::class, $game);
-        $form->handleRequest($req);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        
+        $formGame->handleRequest($req);
+        if ($formGame->isSubmitted() && $formGame->isValid()) {
             
-            $manager->persist($form->getData());
+            $manager->persist($formGame->getData());
             $manager->flush();
             return $this->redirectToRoute('GameBuy.Home');
         }
 
         return $this->render('game/newGame.html.twig',[
-            'form' => $form->createView(),
+            'form' => $formGame->createView(),
         ]);
     }
 
 
 
-
-    public function edit(Game $game,Request $req,EntityManagerInterface $manager):Response{
-
-        $form = $this->createForm(GameType::class, $game);
-        $form->handleRequest($req);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+    public function edit(Game $game,Request $req,EntityManagerInterface $manager):Response
+    {
+        $formGame = $this->createForm(GameType::class, $game);
+        
+        
+        $formGame->handleRequest($req);
+        if ($formGame->isSubmitted() && $formGame->isValid()) {
             
-            $manager->persist($form->getData());
+            $manager->persist($formGame->getData());
             $manager->flush();
             return $this->redirectToRoute('GameBuy.Home');
         }
 
-        return $this->render('game/editGame.html.twig',[
-            'form' => $form->createView(),
+        return $this->render('Admin/adminEditGame.html.twig',[
+            'Admin_form_GameEdition' => $formGame->createView(),
         ]);
     }
 
