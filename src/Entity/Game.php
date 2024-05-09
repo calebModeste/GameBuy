@@ -37,6 +37,9 @@ class Game
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $plateforme = null;
 
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $sortie = null;
+
 
     public function __construct()
     {
@@ -139,6 +142,18 @@ class Game
     public function setPlateforme(?string $plateforme): static
     {
         $this->plateforme = $plateforme;
+
+        return $this;
+    }
+
+    public function getSortie(): ?\DateTimeImmutable
+    {
+        return $this->sortie;
+    }
+
+    public function setSortie(?\DateTimeImmutable $sortie): static
+    {
+        $this->sortie = $sortie;
 
         return $this;
     }

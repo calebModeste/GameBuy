@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Game;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,6 +30,9 @@ class GameType extends AbstractType
             ])
             ->add('descript', TextareaType::class,[
                 'label' => 'Description'
+            ])
+            ->add('sortie',DateType::class,[
+                'widget' => 'choice'
             ])
             ->add('Envoyer', SubmitType::class)
         ;
