@@ -15,10 +15,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class OffreController extends AbstractController
 {
     public function index(EntityManagerInterface $emi): Response
-    {   
+    {   $coupons =[
+            ['code'=>'PromosI', 'reduction' => 10],
+            ['code'=>'PromosII', 'reduction' => 15],
+            ['code'=>'PromosIII', 'reduction' => 20],
+            ['code'=>'PromosIIII', 'reduction' => 25]
+    ];
         
         return $this->render('offre/indexOffre.html.twig', [
             'offres' => $emi->getRepository(Offre::class)->findAll(),
+            'coupons'=> $coupons
         ]);
     }
 
@@ -31,6 +37,19 @@ class OffreController extends AbstractController
 
         ]);
     }
+
+
+    // public function filter(OffreRepository $offre): Response
+    // {
+    //     $offre->findBy(
+    //         [],
+    //         []
+    //     );
+
+
+
+    //     return $this->render('offre/indexOffre.html.twig', []);
+    // }
 
     
     public function new(Request $req, EntityManagerInterface $emi){

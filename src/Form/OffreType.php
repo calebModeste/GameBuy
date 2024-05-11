@@ -6,6 +6,7 @@ use App\Entity\Game;
 use App\Entity\Offre;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,8 +17,10 @@ class OffreType extends AbstractType
     {
         
         $builder
-            ->add('price')
+            ->add('price',MoneyType::class)
             ->add('link')
+            ->add('coupons')
+            ->add('plateformeActivation')
             ->add('offre', EntityType::class, [
                 'class' => Game::class,
                 // 'choice_value' => 'id',

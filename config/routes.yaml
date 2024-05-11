@@ -19,7 +19,6 @@ GameBuy.Game.edit:
     controller: App\Controller\GameController::edit
     methods: GET|POST
     
-
 GameBuy.Game.delete:
     path: /gameDelete_{id}
     controller: App\Controller\GameController::delete
@@ -28,10 +27,21 @@ GameBuy.Game.delete:
 
 
 
+
 GameBuy.Offre.ShowAll:
     path: /offre
     controller: App\Controller\OffreController::index
 
+GameBuy.Offre.filter.edition:
+    path: /game/filterEdition={filter1}&filterPlatforme={filter2}&filterPlatformeAct={filter3}&trier_{prix}
+    controller: App\Controller\OffreController::filter
+    methods: GET
+    defaults:
+        filter1: all
+        filter2: all
+        filter3: all
+        prix: ASC
+    
 GameBuy.Offre.New:
     path: /offreForm
     controller: App\Controller\OffreController::new

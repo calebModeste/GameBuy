@@ -5,6 +5,29 @@
 
 {% block body %}
 
+    {# à continuer formulaire de filtrage #}
+	<div class="container border-secondary">
+		<div class="input-group">
+			<input type="text" class="form-control" name="azerty1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+			<input type="text" class="form-control" name="azerty2" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+
+			<select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+				<option selected>Console</option>
+				<option value="1">Sony</option>
+				<option value="2">Switch</option>
+				<option value="3">XBOX</option>
+			</select>
+			<select class="form-select bg-secondary text-light" id="inputGroupSelect04" aria-label="Example select with button addon">
+				<option selected>trier :: prix</option>
+				<option value="1">ASC</option>
+				<option value="2">DESC</option>
+
+			</select>
+			<a class="btn btn-primary text-light" href="{{ path('GameBuy.Offre.filter.edition')}}">filter</a>
+
+		</div>
+
+	</div>
 
 	<div class="container my-2">
 		<table class="table">
@@ -13,6 +36,7 @@
 					<th scope="col">id</th>
 					<th scope="col">price</th>
 					<th scope="col">link</th>
+					<th scope="col">plateforme d'activation</th>
 					<th scope="col">game</th>
 					<th scope="col">operation</th>
 				</tr>
@@ -22,8 +46,18 @@
 
 					<th scope="row">{{offre.id}}</th>
 					<td>{{offre.price}}</td>
-					<td>{{offre.link|default('vide')}}</td>
-					<td>{{offre.offre.name|default('pas associer')}}</td>
+					<td>{{offre.link|default('lien vide')}}</td>
+					<td>{{offre.plateformeActivation|default('plateforme Act vide')}}</td>
+
+					<td>
+						<ul class="list-group">
+							<li class="list-group-item text-uppercase fw-bold">{{offre.offre.name|default('pas associer')}}</li>
+
+
+							<li class="list-group-item text-center">{{offre.offre.editeur|default('pas associer')}}</li>
+							<li class="list-group-item text-center">{{offre.offre.plateforme|default('pas associer')}}</li>
+						</ul>
+					</td>
 
 
 					<td>

@@ -21,6 +21,12 @@ class Offre
     #[ORM\ManyToOne(inversedBy: 'offre')]
     private ?Game $offre = null;
 
+    #[ORM\Column(length: 128, nullable: true)]
+    private ?string $plateformeActivation = null;
+
+    #[ORM\Column(length: 64, nullable: true)]
+    private ?string $coupons = null;
+
  
     public function getId(): ?int
     {
@@ -59,6 +65,30 @@ class Offre
     public function setOffre(?Game $offre): static
     {
         $this->offre = $offre;
+
+        return $this;
+    }
+
+    public function getPlateformeActivation(): ?string
+    {
+        return $this->plateformeActivation;
+    }
+
+    public function setPlateformeActivation(?string $plateformeActivation): static
+    {
+        $this->plateformeActivation = $plateformeActivation;
+
+        return $this;
+    }
+
+    public function getCoupons(): ?string
+    {
+        return $this->coupons;
+    }
+
+    public function setCoupons(?string $coupons): static
+    {
+        $this->coupons = $coupons;
 
         return $this;
     }

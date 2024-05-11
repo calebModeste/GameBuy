@@ -24,6 +24,8 @@ class GameController extends AbstractController
         ]);
     }
 
+
+
     public function new(Request $req,EntityManagerInterface $manager):Response{
         $game = new Game();
         $formGame = $this->createForm(GameType::class, $game);
