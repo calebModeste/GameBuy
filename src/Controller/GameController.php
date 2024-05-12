@@ -20,7 +20,6 @@ class GameController extends AbstractController
         return $this->render('game/index.html.twig', [
             'controller_name' => 'GameController',
             'games' => $game->FindListGame(),
-
         ]);
     }
 

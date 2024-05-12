@@ -21,26 +21,28 @@
 						</h5>
 						<p class="card-subtitle mb-2 text-body-secondary">
 							<span class="badge text-bg-secondary">
-								{{game.editeur | default('Null')}}
+								{{game.editeur|default('Null')}}
 							</span>
 							<span class="badge text-bg-secondary">
-								{{game.developpeurs | default('Null')}}
+								{{game.developpeurs|default('Null')}}
 							</span>
 							<span class="badge text-bg-secondary">
-								{{game.plateforme | default('Null')}}
+								{{game.plateforme|default('Null')}}
 							</span>
 						</p>
 
 						<p class="card-text">{{game.descript}}</p>
-						<p class="card-text text-info fw-bold fs-3">{{ game.price}}€</p>
+						<p class="card-text text-info fw-bold fs-3">{{ game.price|default('00')}}€</p>
+
 
 						<div class="btn-group" role="group" aria-label="Basic mixed styles example">
 
-							<a href="{{path('GameBuy.Game.edit',{id: game.id})}}" class="btn btn-warning">edite</a>
+							<a href="{{path('GameBuy.Game.edit',{id: game.gameId})}}" class="btn btn-warning">edite</a>
 
-							<a href={{game.link}} class="btn btn-primary">Buy</a>
+							<a href={{game.link|default('#')}} class="btn btn-primary">Buy</a>
 
-							{# <a href="{{path('GameBuy.Game.delete',{id: game.id})}}" class="btn btn-danger">suprimer</a> #}
+							<a href="{{path('GameBuy.Game.delete',{id: game.gameId})}}" class="btn btn-danger">suprimer</a>
+
 
 						</div>
 					</div>

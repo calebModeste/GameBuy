@@ -23,7 +23,7 @@ class GameRepository extends ServiceEntityRepository
     public function FindListGame(): array
     {
         $entityManager = $this->getEntityManager()->getConnection();
-        $sql = "SELECT * FROM game join offre ON game.id =offre.id";
+        $sql = "SELECT *, game.id as gameId, offre.id as offreID FROM game left join offre ON game.id = offre.offre_id";
 
         return $entityManager->executeQuery($sql)->fetchAllAssociative();
     }
